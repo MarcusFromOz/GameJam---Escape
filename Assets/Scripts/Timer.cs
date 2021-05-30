@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 90;
+    public float timeRemaining = 300;
     public bool timerIsRunning = false;
 
     public TextMeshProUGUI timeText;
 
     [SerializeField] GameManager gameManager;
+    AudioSource myAudioSource;
+    bool playSound = true;
 
     private void Start()
     {
         timerIsRunning = true;
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,12 +32,26 @@ public class Timer : MonoBehaviour
                 DisplayTime(timeRemaining);
 
                 //Do other things based on the time remaining
-                // - Make the lights darker
-                gameManager.SetLighting(1 + (timeRemaining/50));
+                // 1. Make the lights darker
+
+                float intensity = (timeRemaining / 75) - 1;
+                gameManager.SetLighting(intensity > 0 ? intensity : 0);
+
+                // 2. Music? Sounds? UI?
+                if (timeRemaining < 240 && playSound == true)
+                {
+                    myAudioSource.Play();
+                    playSound = false;
+                }
             }
             else
             {
-                //do something
+                //do something to indicate time has run out
+                // 1. show high score table
+
+                // 2. lock movement 
+
+
                 timeRemaining = 0;
                 timerIsRunning = false;
             }

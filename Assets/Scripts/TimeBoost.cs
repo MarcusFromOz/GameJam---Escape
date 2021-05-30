@@ -7,12 +7,17 @@ public class TimeBoost : MonoBehaviour
 {
     private float timeBoost;
     [SerializeField] TextMeshProUGUI timeText;
+    
+    [SerializeField] BoostTextSpawner boostText;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            timeBoost = Random.Range(-5.0f, 5.0f);
-            Debug.Log("timeBoost: "+ timeBoost);
+            timeBoost = Random.Range(-5.0f, 20.0f);
+            //Debug.Log("timeBoost: "+ timeBoost);
+            
+            boostText.Spawn(timeBoost);
 
             timeText.GetComponent<Timer>().timeRemaining += timeBoost;
 

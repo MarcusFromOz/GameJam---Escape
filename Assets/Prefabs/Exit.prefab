@@ -4919,5 +4919,5 @@ MonoBehaviour:
   level3StartPosition: {fileID: 0}
   level4StartPosition: {fileID: 0}
   level5StartPosition: {fileID: 0}
-  myTimer: {fileID: 0}
   gameManager: {fileID: 7456393195688133878, guid: 66d80c7ad1e52784994d82c6d1ad039d, type: 3}
+  myScoreboard: {fileID: 2764682626532733134, guid: aa80b7c13493ac0408af95c22b07add8, type: 3}
