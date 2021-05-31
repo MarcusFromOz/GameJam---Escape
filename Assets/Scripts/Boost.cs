@@ -14,7 +14,7 @@ public class Boost : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            speedBoost = Random.Range(-2.0f, 2.0f);
+            speedBoost = Random.Range(-2.0f, 4.0f);
             //Debug.Log(speedBoost);
 
             boostText.Spawn(speedBoost);

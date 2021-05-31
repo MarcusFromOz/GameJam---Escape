@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Scoreboards;
+using System;
 
 public class Teleporter : MonoBehaviour
 {
@@ -17,12 +18,14 @@ public class Teleporter : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
     [SerializeField] Scoreboard myScoreboard;
+    
+    LevelLoad myLevelLoad;
 
     private void Start()
     {
         myTimer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
         myScoreboard = GameObject.FindGameObjectWithTag("Scoreboard").GetComponent<Scoreboard>();
-        //gameManager = gameObject.GetComponent<GameManager>();
+        myLevelLoad = GameObject.Find("Level Loader").GetComponent<LevelLoad>();
     }
 
 
@@ -52,28 +55,27 @@ public class Teleporter : MonoBehaviour
             }
             else if (other.GetComponent<PlayerController>().currentLevel == 5)
             {
-                //End Game (You win !!)
+                // End the Game (You win !!)
 
-                // - Freeze Timer
+                // Freeze Timer
                 myTimer.timerIsRunning = false;
 
-                //gameManager.SetLighting(10f);
+                // Stop the player from moving
+                other.GetComponent<PlayerController>().isDead = true;
 
                 // Show the high scores and how you went
-                myScoreboard.enabled = true;
+                myScoreboard.transform.GetChild(0).gameObject.SetActive(true);
 
+                // If a high score, save it
                 ScoreboardEntryData newScoreboardEntry = new ScoreboardEntryData();
-                newScoreboardEntry.entryDate = ("testDate");
-                newScoreboardEntry.entryScore = myTimer.timeRemaining;
+
+                newScoreboardEntry.entryDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                newScoreboardEntry.entryScore = Mathf.Round(myTimer.timeRemaining);
 
                 myScoreboard.AddEntry(newScoreboardEntry);
-                // - If a high score, save it
 
-                // - Show a button to play again or go to the title screen
-
-                // For now just go back to the main screen
-                //other.GetComponent<PlayerController>().currentLevel = 1;
-                //other.gameObject.transform.position = level1StartPosition.transform.position;
+                // Go back to the start screen
+                myLevelLoad.LoadStartScene(8);
             }
         }
     }

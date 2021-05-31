@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Scoreboards;
 
 public class Timer : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timeText;
 
     [SerializeField] GameManager gameManager;
+
+    [SerializeField] PlayerController myPlayerController;
+    [SerializeField] Scoreboard myScoreboard;
+    [SerializeField] LevelLoad myLevelLoad;
+
     AudioSource myAudioSource;
     bool playSound = true;
 
@@ -20,6 +26,7 @@ public class Timer : MonoBehaviour
     {
         timerIsRunning = true;
         myAudioSource = GetComponent<AudioSource>();
+        timeRemaining = 300;
     }
 
     void Update()
@@ -47,13 +54,19 @@ public class Timer : MonoBehaviour
             else
             {
                 //do something to indicate time has run out
-                // 1. show high score table
-
-                // 2. lock movement 
-
-
+                
                 timeRemaining = 0;
                 timerIsRunning = false;
+
+                // Stop the player from moving
+                myPlayerController.isDead = true;
+
+                // Show the high scores
+                myScoreboard.enabled = true;
+
+                // Go back to the start screen
+                myLevelLoad.LoadStartScene(10);
+
             }
         }
     }

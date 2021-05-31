@@ -35,12 +35,6 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI speedText;
 
-    //public void OnCollisionEnter(Collision col)
-    //{
-    //            isDead = true;
-    //}
-
-
     bool IsMoveInput
     {
         get { return !Mathf.Approximately(moveDirection.sqrMagnitude, 0f); }
@@ -150,6 +144,6 @@ public class PlayerController : MonoBehaviour
     
     public void DisplaySpeed(float speedToDisplay)
     {
-        speedText.text = string.Format("{0:00}", speedToDisplay);
+        speedText.text = string.Format("{0:0.0}", speedToDisplay);
     }
 }

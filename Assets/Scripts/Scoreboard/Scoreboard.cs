@@ -12,9 +12,6 @@ namespace Scoreboards
         [SerializeField] private Transform highscoresFrame = null;
         [SerializeField] private GameObject scoreboardEntryObject = null;
 
-        [Header("Test")]
-        [SerializeField] ScoreboardEntryData testEntrydata = new ScoreboardEntryData();
-
         private string SavePath => $"{Application.persistentDataPath}/EscapeHighscores.json";
 
         private void Start()
@@ -26,13 +23,6 @@ namespace Scoreboards
             SaveScores(savedScores);
         }
 
-        [ContextMenu("Add Test Entry")]
-        public void AddtestEntry()
-        {
-            AddEntry(testEntrydata);
-        }
-
-
         public void AddEntry(ScoreboardEntryData scoreboardEntryData)
         {
             ScoreboardSaveData savedScores = GetSavedScores();
@@ -41,13 +31,12 @@ namespace Scoreboards
 
             for (int i = 0; i < savedScores.highscores.Count; i++)
             {
-                if (scoreboardEntryData.entryScore < savedScores.highscores[i].entryScore)
+                if (scoreboardEntryData.entryScore > savedScores.highscores[i].entryScore)
                 {
                     savedScores.highscores.Insert(i, scoreboardEntryData);
                     scoreAdded = true;
                     break;
                 }
-
             }
 
             if (!scoreAdded && savedScores.highscores.Count < maxScoreboardEntries)

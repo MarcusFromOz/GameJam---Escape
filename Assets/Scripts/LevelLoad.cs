@@ -9,7 +9,7 @@ public class LevelLoad : MonoBehaviour
 {
     int currentSceneIndex;
     [SerializeField] int timeToWait = 5;
-
+    
     void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -29,4 +29,22 @@ public class LevelLoad : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void LoadStartScene(int delay)
+    {
+        StartCoroutine(WaitForStartScreen(delay));
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+
+    IEnumerator WaitForStartScreen(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(1);
+    }
+
 }

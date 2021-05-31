@@ -148,10 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84379cc65f02444408323a77e8ba02be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 300
+  timeRemaining: 3
   timerIsRunning: 0
   timeText: {fileID: 2368236098921362501}
   gameManager: {fileID: 7456393195688133878, guid: 66d80c7ad1e52784994d82c6d1ad039d, type: 3}
+  myPlayerController: {fileID: 5702247928831924919, guid: fe9e7a24657aeda418595be48af82a0c, type: 3}
+  myScoreboard: {fileID: 2764682626532733134, guid: aa80b7c13493ac0408af95c22b07add8, type: 3}
+  myLevelLoad: {fileID: 1278099996295318375, guid: ed41b152d04b3c34f9b70f23116d38bc, type: 3}
 --- !u!82 &6792059239543578440
 AudioSource:
   m_ObjectHideFlags: 0
