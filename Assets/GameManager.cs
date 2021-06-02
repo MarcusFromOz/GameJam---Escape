@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         ChooseEnabledExits("Level2Exit");
         ChooseEnabledExits("Level3Exit");
         ChooseEnabledExits("Level4Exit");
-
+        
         myScoreboardCanvas = GameObject.FindWithTag("ScoreboardCanvas");
         myScoreboardCanvas.SetActive(false);
     }

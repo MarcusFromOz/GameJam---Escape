@@ -13,9 +13,8 @@ public class Teleporter : MonoBehaviour
     [SerializeField] GameObject level3StartPosition;
     [SerializeField] GameObject level4StartPosition;
     [SerializeField] GameObject level5StartPosition;
-
-    Timer myTimer;
-
+    [SerializeField] Timer myTimer;
+    
     [SerializeField] GameManager gameManager;
     [SerializeField] Scoreboard myScoreboard;
     
@@ -23,11 +22,9 @@ public class Teleporter : MonoBehaviour
 
     private void Start()
     {
-        myTimer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
         myScoreboard = GameObject.FindGameObjectWithTag("Scoreboard").GetComponent<Scoreboard>();
         myLevelLoad = GameObject.Find("Level Loader").GetComponent<LevelLoad>();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -69,8 +66,8 @@ public class Teleporter : MonoBehaviour
                 // If a high score, save it
                 ScoreboardEntryData newScoreboardEntry = new ScoreboardEntryData();
 
-                newScoreboardEntry.entryDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-                newScoreboardEntry.entryScore = Mathf.Round(myTimer.timeRemaining);
+                newScoreboardEntry.entryDate = DateTime.Now.ToString("dd MMM yyyy HH:mm");
+                newScoreboardEntry.entryScore = Mathf.Round(myTimer.GetTimeRemaining());
 
                 myScoreboard.AddEntry(newScoreboardEntry);
 

@@ -13,7 +13,7 @@ namespace Scoreboards
         public void Initialise(ScoreboardEntryData scoreboardEntryData)
         {
             entryDateText.text = scoreboardEntryData.entryDate;
-            entryScoreText.text = scoreboardEntryData.entryScore.ToString();
+            entryScoreText.text = scoreboardEntryData.entryScore.ToString() + " seconds left";
         }
 
     }

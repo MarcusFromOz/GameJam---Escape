@@ -64,8 +64,10 @@ public class PlayerController : MonoBehaviour
         desiredSpeed = direction.magnitude * maxForwardSpeed * Mathf.Sign(fDirection);
         float acceleration = IsMoveInput ? groundAccel : groundDecel;
 
-        forwardSpeed = Mathf.MoveTowards(forwardSpeed, desiredSpeed, acceleration * Time.deltaTime);
+        //Debug.Log("Max" + maxForwardSpeed + " Des" +  desiredSpeed + " Forw" + forwardSpeed);
 
+        forwardSpeed = Mathf.MoveTowards(forwardSpeed, desiredSpeed, acceleration * Time.deltaTime);
+        
         anim.SetFloat("ForwardSpeed", forwardSpeed * 5.0f);
 
         transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);

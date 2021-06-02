@@ -6,24 +6,24 @@ using UnityEngine;
 public class TimeBoost : MonoBehaviour
 {
     private float timeBoost;
-    [SerializeField] TextMeshProUGUI timeText;
     
+    [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] BoostTextSpawner boostText;
+    [SerializeField] AudioSource timeBoostSound;
+
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
-            timeBoost = Random.Range(-5.0f, 20.0f);
-            //Debug.Log("timeBoost: "+ timeBoost);
-            
+            timeBoost = Random.Range(-30.0f, 40.0f);
+
             boostText.Spawn(timeBoost);
+            timeBoostSound.Play();
 
-            timeText.GetComponent<Timer>().timeRemaining += timeBoost;
-
-            //no need to trigger timer - is running through the timer update method anyway
-            //other.GetComponent<PlayerController>().DisplaySpeed(other.GetComponent<PlayerController>().moveSpeed);
-
+            timeText.GetComponent<Timer>().SetTimeRemaining(timeBoost);
+            
             Destroy(gameObject, 0.5f);
         }
     }

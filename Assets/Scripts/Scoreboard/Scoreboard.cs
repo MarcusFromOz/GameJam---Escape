@@ -13,9 +13,12 @@ namespace Scoreboards
         [SerializeField] private GameObject scoreboardEntryObject = null;
 
         private string SavePath => $"{Application.persistentDataPath}/EscapeHighscores.json";
+        GameObject title;
 
         private void Start()
         {
+            title = GameObject.FindGameObjectWithTag("title");
+
             ScoreboardSaveData savedScores = GetSavedScores();
 
             UpdateUI(savedScores);
@@ -92,6 +95,12 @@ namespace Scoreboards
                 string json = JsonUtility.ToJson(scoreboardSaveData, true);
                 stream.Write(json);
             }
+        }
+
+        public void ShowScoreboard()
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(!gameObject.transform.GetChild(0).gameObject.active);
+            title.SetActive(!gameObject.transform.GetChild(0).gameObject.active);
         }
     }
 }

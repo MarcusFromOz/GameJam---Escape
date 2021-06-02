@@ -8,7 +8,7 @@ using Scoreboards;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 300;
+    private float timeRemaining = 300;
     public bool timerIsRunning = false;
 
     public TextMeshProUGUI timeText;
@@ -18,15 +18,26 @@ public class Timer : MonoBehaviour
     [SerializeField] PlayerController myPlayerController;
     [SerializeField] Scoreboard myScoreboard;
     [SerializeField] LevelLoad myLevelLoad;
+    [SerializeField] GameObject stressPanel;
+    [SerializeField] GameObject stressPanel1;
 
     AudioSource myAudioSource;
-    bool playSound = true;
-
+    
     private void Start()
     {
         timerIsRunning = true;
         myAudioSource = GetComponent<AudioSource>();
-        timeRemaining = 300;
+    }
+
+    public float GetTimeRemaining()
+    {
+        return timeRemaining;
+    }
+
+    public void SetTimeRemaining(float timeBoost)
+    { 
+        timeRemaining += timeBoost;
+        DisplayTime(timeRemaining);
     }
 
     void Update()
@@ -36,19 +47,23 @@ public class Timer : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
+                
+                timeText.text = Mathf.Round(timeRemaining).ToString();
                 DisplayTime(timeRemaining);
 
                 //Do other things based on the time remaining
                 // 1. Make the lights darker
 
-                float intensity = (timeRemaining / 75) - 1;
+                float intensity = (timeRemaining / 75);
                 gameManager.SetLighting(intensity > 0 ? intensity : 0);
 
-                // 2. Music? Sounds? UI?
-                if (timeRemaining < 240 && playSound == true)
+                if (timeRemaining < 60)
                 {
-                    myAudioSource.Play();
-                    playSound = false;
+                    stressPanel1.SetActive(true);
+                }
+                else if (timeRemaining < 120)
+                {
+                    stressPanel.SetActive(true);
                 }
             }
             else
@@ -65,19 +80,20 @@ public class Timer : MonoBehaviour
                 myScoreboard.enabled = true;
 
                 // Go back to the start screen
-                myLevelLoad.LoadStartScene(10);
+                myLevelLoad.LoadStartScene(7);
 
             }
         }
     }
 
-    void DisplayTime(float timeToDisplay)
+    public void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay += 1;
+        //timeToDisplay += 1;
 
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        //float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        //float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
-        timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = Mathf.Round(timeToDisplay).ToString();
     }
 }

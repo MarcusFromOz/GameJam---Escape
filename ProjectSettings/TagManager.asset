@@ -12,6 +12,7 @@ TagManager:
   - Level3Exit
   - Level4Exit
   - ScoreboardCanvas
+  - title
   layers:
   - Default
   - TransparentFX
