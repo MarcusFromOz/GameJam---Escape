@@ -10,6 +10,7 @@ namespace Scoreboards
     {
         public string entryDate;
         public float entryScore;
+        public bool easyMode;
     }
 }
 

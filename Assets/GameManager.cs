@@ -8,13 +8,19 @@ public class GameManager : MonoBehaviour
 
     GameObject myScoreboardCanvas;
 
+    public bool easyMode = false;
+
     private void Start()
     {
-        ChooseEnabledExits("Level1Exit");
-        ChooseEnabledExits("Level2Exit");
-        ChooseEnabledExits("Level3Exit");
-        ChooseEnabledExits("Level4Exit");
-        
+        if (easyMode == false)
+        {
+            // If not easyMode then limit exits to one per level
+            ChooseEnabledExits("Level1Exit");
+            ChooseEnabledExits("Level2Exit");
+            ChooseEnabledExits("Level3Exit");
+            ChooseEnabledExits("Level4Exit");
+        }
+
         myScoreboardCanvas = GameObject.FindWithTag("ScoreboardCanvas");
         myScoreboardCanvas.SetActive(false);
     }

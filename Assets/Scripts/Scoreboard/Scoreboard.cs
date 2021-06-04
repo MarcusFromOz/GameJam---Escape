@@ -11,6 +11,7 @@ namespace Scoreboards
         [SerializeField] private int maxScoreboardEntries = 5;
         [SerializeField] private Transform highscoresFrame = null;
         [SerializeField] private GameObject scoreboardEntryObject = null;
+        [SerializeField] GameManager gameManager;
 
         private string SavePath => $"{Application.persistentDataPath}/EscapeHighscores.json";
         GameObject title;
@@ -102,5 +103,6 @@ namespace Scoreboards
             gameObject.transform.GetChild(0).gameObject.SetActive(!gameObject.transform.GetChild(0).gameObject.active);
             title.SetActive(!gameObject.transform.GetChild(0).gameObject.active);
         }
+
     }
 }

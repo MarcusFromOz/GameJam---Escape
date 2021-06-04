@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4220216083379172703}
   - component: {fileID: 3945719962585793186}
   - component: {fileID: 290441129437755037}
+  - component: {fileID: 4861078065719563585}
   m_Layer: 0
   m_Name: phone_base_mesh
   m_TagString: Untagged
@@ -90,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2557157302316145714, guid: 3d1c34cced8168b41a8f9fbacd50d199, type: 3}
+  - {fileID: 2100000, guid: 11eca2556da27534d88fabc8e6686d92, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,3 +113,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4861078065719563585
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928506997340692739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8710549460407368264, guid: 3d1c34cced8168b41a8f9fbacd50d199, type: 3}

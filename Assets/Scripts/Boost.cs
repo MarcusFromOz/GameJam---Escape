@@ -7,6 +7,8 @@ public class Boost : MonoBehaviour
 {
     private float speedBoost;
     [SerializeField] AudioSource speedBoostSound;
+    [SerializeField] AudioSource badSpeedBoostSound;
+
 
     [SerializeField] BoostTextSpawner boostText;
     
@@ -20,7 +22,14 @@ public class Boost : MonoBehaviour
 
             other.GetComponent<PlayerController>().maxForwardSpeed += speedBoost;
 
-            speedBoostSound.Play();
+            if (speedBoost > 0)
+            {
+                speedBoostSound.Play();
+            }
+            else
+            {
+                badSpeedBoostSound.Play();
+            }
 
             other.GetComponent<PlayerController>().DisplaySpeed(other.GetComponent<PlayerController>().maxForwardSpeed);
 

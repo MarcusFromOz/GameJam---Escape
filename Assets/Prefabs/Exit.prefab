@@ -5265,6 +5265,7 @@ MonoBehaviour:
   myTimer: {fileID: 2368236098921362503, guid: 96ac5f5bf29bb29449df52720eea14fc, type: 3}
   gameManager: {fileID: 7456393195688133878, guid: 66d80c7ad1e52784994d82c6d1ad039d, type: 3}
   myScoreboard: {fileID: 2764682626532733134, guid: aa80b7c13493ac0408af95c22b07add8, type: 3}
+  goodAudioSource: {fileID: 0}
 --- !u!54 &670448184990843396
 Rigidbody:
   m_ObjectHideFlags: 0

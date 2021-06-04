@@ -21,12 +21,12 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject stressPanel;
     [SerializeField] GameObject stressPanel1;
 
-    AudioSource myAudioSource;
+    //AudioSource myAudioSource;
     
     private void Start()
     {
         timerIsRunning = true;
-        myAudioSource = GetComponent<AudioSource>();
+        //myAudioSource = GetComponent<AudioSource>();
     }
 
     public float GetTimeRemaining()
@@ -81,7 +81,6 @@ public class Timer : MonoBehaviour
 
                 // Go back to the start screen
                 myLevelLoad.LoadStartScene(7);
-
             }
         }
     }

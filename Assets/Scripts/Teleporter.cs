@@ -17,7 +17,9 @@ public class Teleporter : MonoBehaviour
     
     [SerializeField] GameManager gameManager;
     [SerializeField] Scoreboard myScoreboard;
-    
+
+    [SerializeField] AudioSource goodAudioSource;
+
     LevelLoad myLevelLoad;
 
     private void Start()
@@ -68,7 +70,8 @@ public class Teleporter : MonoBehaviour
 
                 newScoreboardEntry.entryDate = DateTime.Now.ToString("dd MMM yyyy HH:mm");
                 newScoreboardEntry.entryScore = Mathf.Round(myTimer.GetTimeRemaining());
-
+                newScoreboardEntry.easyMode = gameManager.easyMode;
+            
                 myScoreboard.AddEntry(newScoreboardEntry);
 
                 // Go back to the start screen

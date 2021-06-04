@@ -10,7 +10,7 @@ public class TimeBoost : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] BoostTextSpawner boostText;
     [SerializeField] AudioSource timeBoostSound;
-
+    [SerializeField] AudioSource badTimeBoostSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,9 +19,17 @@ public class TimeBoost : MonoBehaviour
         {
             timeBoost = Random.Range(-30.0f, 40.0f);
 
-            boostText.Spawn(timeBoost);
-            timeBoostSound.Play();
+            if (timeBoost < 0)
+            {
+                badTimeBoostSound.Play();
+            }
+            else
+            {
+                timeBoostSound.Play();
+            }
 
+            boostText.Spawn(timeBoost);
+            
             timeText.GetComponent<Timer>().SetTimeRemaining(timeBoost);
             
             Destroy(gameObject, 0.5f);

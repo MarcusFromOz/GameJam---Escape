@@ -9,6 +9,7 @@ public class LevelLoad : MonoBehaviour
 {
     int currentSceneIndex;
     [SerializeField] int timeToWait = 5;
+    [SerializeField] GameManager gameManager;
     
     void Start()
     {
@@ -30,8 +31,21 @@ public class LevelLoad : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadEasyMode()
+    {
+        gameManager.easyMode = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadStartSceneNow()
+    {
+        gameManager.easyMode = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void LoadStartScene(int delay)
     {
+        gameManager.easyMode = false;
         StartCoroutine(WaitForStartScreen(delay));
     }
 

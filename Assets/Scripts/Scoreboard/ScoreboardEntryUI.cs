@@ -9,13 +9,21 @@ namespace Scoreboards
     {
         [SerializeField] private TextMeshProUGUI entryDateText = null;
         [SerializeField] private TextMeshProUGUI entryScoreText = null;
+        [SerializeField] GameManager gameManager;
 
         public void Initialise(ScoreboardEntryData scoreboardEntryData)
         {
             entryDateText.text = scoreboardEntryData.entryDate;
-            entryScoreText.text = scoreboardEntryData.entryScore.ToString() + " seconds left";
+            
+            if (scoreboardEntryData.easyMode)
+            {
+                entryScoreText.text = "*" + scoreboardEntryData.entryScore.ToString() + " seconds left";
+            }
+            else
+            {
+                entryScoreText.text = scoreboardEntryData.entryScore.ToString() + " seconds left";
+            }
         }
-
     }
 }
 

@@ -512,3 +512,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryDateText: {fileID: 472676864}
   entryScoreText: {fileID: 3174497821298155950}
+  gameManager: {fileID: 7456393195688133878, guid: 66d80c7ad1e52784994d82c6d1ad039d, type: 3}
